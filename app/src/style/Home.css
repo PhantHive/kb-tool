@@ -1,0 +1,96 @@
+body {
+    background: linear-gradient(to bottom, #000000 0%, #000000 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+
+.KB_TOOL {
+
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 550px;
+    max-height: 550px;
+    padding: 15px;
+    background: #000000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+#entry {
+    width: 20vw;
+    height: 5vh;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+#submit {
+
+    width: 20vw;
+    height: 5vh;
+    border: 2px solid #ffff00;
+    background: #000000;
+    color: #ffffff;
+}
+
+#submit:hover {
+    background: #ffff00;
+    color: #000000;
+}
+
+li {
+    position: relative;
+    text-align: center;
+    font-size: 17px;
+    list-style-type: none;
+    margin: 5px;
+    border-top: 1px solid #ffffff;
+    border-radius: 2px;
+    background: rgba(121, 121, 121, 0.29);
+    width: 10vw;
+    left: 45%;
+    transform: translate(-45%, -45%);
+}
+
+li:hover {
+
+    width: 20vw;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 5px;
+    border-top: 1px solid #ffffff;
+    transition: all 1s ease-in-out;
+    transition: width 1s;
+    transition: width 1s, background-color 0.5s;
+    transition: width 1s, background-color 0.5s, box-shadow 1s;
+    transition: width 1s, background-color 0.5s, box-shadow 1s, border-radius 1s;
+    text-shadow: 0 0 5px #fff;
+}
+
+li:first-child {
+    font-weight: bold;
+    border-color: rgb(255, 255, 0);
+}
+
