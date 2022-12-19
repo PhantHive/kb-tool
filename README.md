@@ -40,13 +40,17 @@ The goal is to get the most relevant name for a given search in database.
 
 - Clone the repository
 - Install dependencies with `npm install`
-- Run the script: `start.sh` in the root folder or you can start API and APP separately
-using `npm start` in the API and APP folders respectively.
+- Run the script: you can start API and APP separately
+using `npm start` in the API and APP folders respectively or using scripts `start_app.sh` and `start_api.sh`.
 - Open your browser and go to `localhost:3000` to see the app running. You can also create a `.env` file in the API folder and add a **PORT** variable to change the port.
 
 ### Dependencies problems
 - If you have problems with dependencies, try to update using `ncu -u` and then `npm install`
 - Try to delete the `package-lock.json` file and then `npm install`
+
+### Port issues
+- In case you have a port already in use you can change it a .env file in the API folder and add a **PORT** variable to change the port.
+- In case you started the app and you want to change the port, you can kill the process using `npx kill-port <number of port>` and then start the app again.
 
 ### Acknowledgement
 
