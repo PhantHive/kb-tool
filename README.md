@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://imgur.com/YkqHJUb.png" alt="crossword_demo"/>
+<img src="demo.gif" alt="crossword_demo"/>
 
 
 
