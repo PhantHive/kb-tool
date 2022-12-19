@@ -28,8 +28,6 @@
 ### Branches
 
 - [x] [stable] - Stable branch (complete with start.sh)
-- [x] [API] - API branch 
-- [x] [APP] - Frontend branch
 
 ### Purpose
 
