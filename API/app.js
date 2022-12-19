@@ -36,7 +36,8 @@ app.get('/names', (req, res) => {
 
 
     // filter the list of names that start with the letter the user typed
-    const filteredNames = names.filter(name => name.name.startsWith(req.query.letter) && name.name !== '');
+    const toMatch = new RegExp(req.query.letter, 'i');
+    const filteredNames = names.filter(name => toMatch.test(name.name) && name.name !== '');
     console.log('filteredNames', filteredNames);
 
     // sort the list of names by trust level
@@ -72,7 +73,10 @@ app.get('/update', (req, res) => {
 
 
     // check if the name already exists in the CSV file first column
-    let nameExists = names.filter(name => name.name === req.query.name);
+    // remove space before and after the name
+    const qName = req.query.name.trim();
+    
+    let nameExists = names.filter(name => name.name === qName);
     console.log('nameExists', nameExists);
 
     // if the name already exists in the CSV file
@@ -89,14 +93,18 @@ app.get('/update', (req, res) => {
 
         // get the trust level of the name in second column
         const trustLevel = parseFloat(names[index].trust.split('\\')[0]);
-        console.log('trustLevel', trustLevel);
+        console.log('old trustLevel', trustLevel);
 
         // update the trust level of the name
-        names[index].trust = `${trustLevel + (1 - trustLevel) * 0.9}\r\n`;
-        console.log('names[index].trust', names[index].trust);
+        names[index].trust = `${trustLevel + (1 - trustLevel) * 0.7}`;
+        console.log('new trustLevel', names[index].trust);
 
         // remove empty rows
-        const filteredNames = names.filter(name => name.name !== '' && name.trust !== undefined);
+        const filteredNames = names.filter(name => {
+
+            return name.name !== null && name.name.match(/^ *$/) === null;
+
+        });
         console.log('Updated Version: ', filteredNames);
 
         // update the csv file
@@ -115,13 +123,20 @@ app.get('/update', (req, res) => {
 
         if (data.length === 0) {
             // header : name, trust level
-            const header = 'name,trust level\r\n';
+            const header = 'name,trust level';
             fs.appendFileSync(path.resolve(__dirname, nameDb), header);
 
         }
 
-        // insert the new name in the CSV file with trust level 1 in a new row
-        let newData = `${req.query.name},0.5\r\n`;
+        // insert the new name in the CSV file with trust level 0.5 in a new row
+        // check if \r\n is already in the file
+        let newData;
+        if (data.slice(-2) === '\r\n') {
+            newData = qName + ',0.5\r\n';
+        }
+        else {
+            newData = '\r\n' + qName + ',0.5\r\n';
+        }
 
         // write the updated array to the CSV file
         fs.appendFileSync(path.resolve(__dirname, nameDb), newData);

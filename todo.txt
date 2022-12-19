@@ -1,3 +1,0 @@
-Task:
-
-json: 2 columns (parameters & priority)

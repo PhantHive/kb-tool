@@ -16,6 +16,7 @@ const Home = () => {
 
                 if (data.length === 0) {
                     console.log('no data');
+                    result.innerHTML = '';
 
                 }
                 else if (e.target.value === '') {
